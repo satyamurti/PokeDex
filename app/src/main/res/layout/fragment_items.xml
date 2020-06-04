@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.80"
+        android:background="@drawable/popkemonbg"
+        android:scaleType="fitCenter" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="false"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            app:collapsedTitleTextAppearance="@style/AppTheme.Title.Collapsed"
+            app:expandedTitleTextAppearance="@style/AppTheme.Title.Expanded"
+            app:layout_scrollFlags="scroll|enterAlways|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom|end"
+                app:elevation="0dp"
+                app:layout_collapseMode="pin">
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bubblegum_sans"
+                    android:gravity="center_horizontal"
+                    android:text="   Items"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:overScrollMode="never"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layoutManager="GridLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:itemCount="20"
+        tools:listitem="@layout/pokedex_item"
+        tools:spanCount="1" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

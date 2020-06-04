@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/pokemon_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEvolution1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="Speed"
+            android:textAlignment="center"
+            android:textColor="@color/purple"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvEvolution2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pokemon_image" />
+
+        <TextView
+            android:id="@+id/tvEvolution2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="Attack"
+            android:textAlignment="center"
+            android:textColor="@color/fire"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvEvolution3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEvolution1" />
+
+        <TextView
+            android:id="@+id/tvEvolution3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="Defense"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEvolution2" />
+
+        <TextView
+            android:id="@+id/btShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_baseline_share_24"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text=" Share Your Pokemon??"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEvolution3" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="Abilities"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btTypes" />
+
+        <Button
+            android:id="@+id/btEvolutions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_buttons_pokemon"
+            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/bubblegum_sans"
+            android:paddingEnd="4dp"
+            android:text="      Evolutions"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btShare" />
+
+        <Button
+            android:id="@+id/btStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_buttons_pokemon"
+            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/bubblegum_sans"
+            android:paddingEnd="4dp"
+
+            android:text="     Stats"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btEvolutions" />
+
+        <Button
+            android:id="@+id/btTypes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_buttons_pokemon"
+            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:fontFamily="@font/bubblegum_sans"
+            android:paddingEnd="4dp"
+            android:text="     Types"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btStats" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/abilities_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

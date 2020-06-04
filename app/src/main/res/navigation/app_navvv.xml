@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/pokedexFragment">
+
+    <fragment
+        android:id="@+id/pokedexFragment"
+        android:name="com.mrspd.pokedex.fragments.PokedexFragment"
+        android:label="fragment_pokedex"
+        tools:layout="@layout/fragment_pokedex">
+        <action
+            android:id="@+id/action_pokedexFragment_to_pokemonFragment"
+            app:destination="@id/pokemonFragment" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_pokemonFragment2"
+            app:destination="@id/pokemonFragment" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_typesFragment"
+            app:destination="@id/typesFragment" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_regionFragment2"
+            app:destination="@id/regionFragment2" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_favoritePokemonFragments"
+            app:destination="@id/favoritePokemonFragments" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_pokedexFragment_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonFragment"
+        android:name="com.mrspd.pokedex.fragments.PokemonPodexFragment"
+        android:label="fragment_pokemon"
+        tools:layout="@layout/fragment_pokemon">
+        <argument
+            android:name="pokemon"
+            app:argType="com.mrspd.pokedex.models.modelspokedex.Pokeresponse" />
+        <action
+            android:id="@+id/action_pokemonFragment_to_pokedexFragment"
+            app:destination="@id/pokedexFragment"
+            app:popUpTo="@+id/pokedexFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_pokemonFragment_to_evolutionFragment"
+            app:destination="@id/evolutionFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/typesFragment"
+        android:name="com.mrspd.pokedex.fragments.TypesFragment"
+        android:label="TypesFragment">
+
+        <action
+            android:id="@+id/action_typesFragment_to_pokemonTypesFragment"
+            app:destination="@id/pokemonTypesFragment" />
+        <action
+            android:id="@+id/action_typesFragment_to_pokedexFragment2"
+            app:destination="@id/pokedexFragment"
+            app:popUpTo="@+id/pokedexFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/pokemonTypesFragment"
+        android:name="com.mrspd.pokedex.fragments.PokemonTypesFragment"
+        android:label="PokemonTypesFragment">
+        <argument
+            android:name="pokemon"
+            app:argType="com.mrspd.pokedex.adapters.models.modeltypes.TypesResponse" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonRegoinsFragment"
+        android:name="com.mrspd.pokedex.fragments.PokemonRegoinsFragment"
+        android:label="PokemonRegoinsFragment">
+        <argument
+            android:name="pokemon"
+            app:argType="com.mrspd.pokedex.models.modelsregion.RegionsResponse" />
+    </fragment>
+    <fragment
+        android:id="@+id/regionFragment2"
+        android:name="com.mrspd.pokedex.fragments.RegionFragment"
+        android:label="RegionFragment">
+        <action
+            android:id="@+id/action_regionFragment2_to_pokemonRegoinsFragment"
+            app:destination="@id/pokemonRegoinsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_regionFragment2_to_pokedexFragment"
+            app:destination="@id/pokedexFragment"
+            app:popUpTo="@+id/pokedexFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritePokemonFragments"
+        android:name="com.mrspd.pokedex.fragments.FavoritePokemonFragments"
+        android:label="FavoritePokemonFragments">
+        <action
+            android:id="@+id/action_favoritePokemonFragments_to_pokemonFragment"
+            app:destination="@id/pokemonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.mrspd.pokedex.fragments.ItemsFragment"
+        android:label="ItemsFragment" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.mrspd.pokedex.fragments.LocationFragment"
+        android:label="LocationFragment" />
+    <fragment
+        android:id="@+id/evolutionFragment"
+        android:name="com.mrspd.pokedex.fragments.EvolutionFragment"
+        android:label="EvolutionFragment">
+        <argument
+            android:name="pokemon"
+            app:argType="com.mrspd.pokedex.models.modelspokedex.Pokeresponse" />
+    </fragment>
+</navigation>
