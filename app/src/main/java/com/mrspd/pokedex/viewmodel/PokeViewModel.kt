@@ -11,9 +11,11 @@ import com.mrspd.pokedex.api.apievolutiion.RetrofitInstanceEvolution
 import com.mrspd.pokedex.api.apiitems.RetrofitInstanceItems
 import com.mrspd.pokedex.api.apilocations.RetrofitInstanceLocations
 import com.mrspd.pokedex.api.apipokedex.RetrofitInstance
+import com.mrspd.pokedex.api.apipokedex.RetrofitInstanceSpecies
 import com.mrspd.pokedex.api.apiregions.RetrofitInstanceRegions
 import com.mrspd.pokedex.api.apitypes.RetrofitInstanceITypes
 import com.mrspd.pokedex.models.modelsevolution.EvolutionResponse
+import com.mrspd.pokedex.models.modelspecies.SpeciesResponse
 import com.mrspd.pokedex.models.modelspokedex.Pokeresponse
 import com.mrspd.pokedex.models.modelsregion.RegionsResponse
 import com.mrspd.pokedex.repository.PokemonRepository
@@ -26,11 +28,10 @@ import kotlinx.coroutines.launch
 class PokeViewModel(var pokemonRepository: PokemonRepository) :
     ViewModel() {
     val evolutions by lazy { MutableLiveData<EvolutionResponse>() }
-    var liveNumber = MutableLiveData<Int>()
-    var evoltionList = ArrayList<String>()
     val pokemons by lazy { MutableLiveData<Pokeresponse>() }
     val itemss by lazy { MutableLiveData<ItemResponse>() }
     val locations by lazy { MutableLiveData<LocationResponse>() }
+    val species by lazy { MutableLiveData<SpeciesResponse>() }
     val types by lazy { MutableLiveData<TypesResponse>() }
     val regions by lazy { MutableLiveData<RegionsResponse>() }
     val loadingError by lazy { MutableLiveData<Boolean>() }
@@ -50,6 +51,8 @@ class PokeViewModel(var pokemonRepository: PokemonRepository) :
         RetrofitInstanceRegions()
     private val apiSeervice6 =
         RetrofitInstanceEvolution()
+    private val apiSeervice7 =
+        RetrofitInstanceSpecies()
     private var isItemLoaded = true
     private var counter = 1
 
@@ -57,38 +60,37 @@ class PokeViewModel(var pokemonRepository: PokemonRepository) :
     fun refresh1(count: Int) {
         counter = 1
         getMyPokemons(count)
-        loading.value = false
+        loading.value = true
+
     }
 
     fun refresh2(count: Int) {
         counter = 1
         getMyPokesItems(count)
-        loading.value = false
+        loading.value = true
     }
 
     fun refresh3(count: Int) {
         counter = 1
         getMyPokesLocation(count)
-        loading.value = false
+        loading.value = true
     }
 
     fun refresh4(count: Int) {
         counter = 1
         getMyPokesTypes(count)
-        loading.value = false
+        loading.value = true
     }
 
     fun refresh5(count: Int) {
         counter = 1
         getMyPokesRegions(count)
-        loading.value = false
+        loading.value = true
     }
 
-    fun refresh6(count: Int) {
-        counter = 1
-        evoltionList.clear()
-        getMyPokesEvolution(count)
-        loading.value = false
+    fun refresh7(url: String) {
+
+        getMyPokesEvolution(url)
     }
 
 
@@ -336,10 +338,30 @@ class PokeViewModel(var pokemonRepository: PokemonRepository) :
         )
     }
 
-    fun getMyPokesEvolution(pokename: Int) {
+    fun getEvolutionIDFRomSpecies(number: Int) {
+        disposable.add(
+            apiSeervice7.getMyEvolutionID(number)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<SpeciesResponse>() {
+                    override fun onSuccess(items: SpeciesResponse) {
+                        species.value = items
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                        loading.value = false
+                        loadingError.value = true
+                    }
+                })
+        )
+    }
+
+    fun getMyPokesEvolution(url: String) {
 
         disposable.add(
-            apiSeervice6.getMyPokesEvolutions(pokename)
+            apiSeervice6.getMyPokesEvolutions(url)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<EvolutionResponse>() {
@@ -372,27 +394,4 @@ class PokeViewModel(var pokemonRepository: PokemonRepository) :
     }
 
 
-    fun getEvolutionList() = viewModelScope.launch {
-        var evolution2: String? = ""
-        var evolution3: String? = ""
-        val evolution1 =
-            evolutions.value?.chain?.species?.name
-
-        evoltionList.add(evolution1.toString())
-        if (evolutions.value?.chain?.evolves_to?.size!! >= 1) {
-            evolution2 =
-                evolutions.value?.chain?.evolves_to?.get(0)?.species?.name
-        }
-        if (evolutions.value?.chain?.evolves_to?.get(0)?.evolves_to?.size!! >= 1) {
-            evolution3 =
-                evolutions.value?.chain?.evolves_to?.get(0)?.evolves_to?.get(0)?.species?.name
-        }
-        evoltionList.add(evolution2.toString())
-        evoltionList.add(evolution3.toString())
-        liveNumber.value = 27
-    }
-
-    fun getMyEvolutionList(): ArrayList<String> {
-        return evoltionList
-    }
 }

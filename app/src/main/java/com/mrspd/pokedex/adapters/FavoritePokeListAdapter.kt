@@ -26,20 +26,6 @@ class FavoritePokeListAdapter(private val itemList: ArrayList<Pokeresponse> = ar
     var AllPokeDex = ArrayList<Pokeresponse>()
 
 
-    ///////////////////////////////////////////////////////////////////////////
-    //  //Creating custom callback of articles by using DiffUtil
-    //    private val differCallback = object : DiffUtil.ItemCallback<Pokeresponse>() {
-    //        override fun areItemsTheSame(oldItem: Pokeresponse, newItem: Pokeresponse): Boolean {
-    //            return oldItem.name == newItem.name
-    //        }
-    //
-    //        override fun areContentsTheSame(oldItem: Pokeresponse, newItem: Pokeresponse): Boolean {
-    //            return oldItem == newItem
-    //        }
-    //
-    //    }
-    //    val differ = AsyncListDiffer(this@FavoritePokeListAdapter, differCallback)
-    ///////////////////////////////////////////////////////////////////////////
 
 
     override fun getFilter(): Filter {

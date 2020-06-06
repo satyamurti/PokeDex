@@ -13,7 +13,8 @@ import com.mrspd.pokedex.adapters.RegionListAdapter
 import com.mrspd.pokedex.models.modelsregion.RegionsResponse
 import com.mrspd.pokedex.ui.MainActivity
 import com.mrspd.pokedex.viewmodel.PokeViewModel
-import kotlinx.android.synthetic.main.fragment_pokedex.*
+import kotlinx.android.synthetic.main.fragment_pokedex.recyclerView
+import kotlinx.android.synthetic.main.fragment_regions.*
 
 class RegionFragment : Fragment(R.layout.fragment_regions) {
     private lateinit var viewModel: PokeViewModel
@@ -28,21 +29,14 @@ class RegionFragment : Fragment(R.layout.fragment_regions) {
 
     private val loadingObserver = androidx.lifecycle.Observer<Boolean> { isLoading ->
         if (isLoading) {
-//            loading_progressbar.visibility = View.VISIBLE
-//            listError_textView.visibility = View.GONE
+            progressBarRegions.visibility = View.VISIBLE
+
 
         } else {
-//            loading_progressbar.visibility = View.GONE
+            progressBarRegions.visibility = View.GONE
         }
     }
-    private val listErrorObserver = androidx.lifecycle.Observer<Boolean> { isError ->
-        if (isError) {
-//            listError_textView.visibility = View.VISIBLE
-//            pokedex_recyclerView.visibility = View.GONE
-        } else {
-//            listError_textView.visibility = View.GONE
-        }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +51,8 @@ class RegionFragment : Fragment(R.layout.fragment_regions) {
 
         viewModel = (activity as MainActivity).viewModel
 
-//        viewModel.loading.observe(this,loadingObserver )
-//        viewModel.loadingError.observe(this, listErrorObserver)
+        viewModel.loading.observe(this, loadingObserver)
+
         viewModel.regions.observe(this, regionObservers)
         viewModel.refresh5(counter)
 

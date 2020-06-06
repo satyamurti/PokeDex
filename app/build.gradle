@@ -32,7 +32,6 @@ def retrofitVersion = '2.3.0'
 def glideVersion = '4.9.0'
 def rxJavaVersion = '2.1.1'
 def navVersion = '2.1.0-alpha05'
-def daggerVersion = '2.14.1'
 def mockitoVersion = '2.11.0'
 
 dependencies {
@@ -52,16 +51,11 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.android.support:palette-v7:$supportVersion"
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
     testImplementation "android.arch.core:core-testing:1.1.1"
-    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
 
     testImplementation 'junit:junit:4.13'

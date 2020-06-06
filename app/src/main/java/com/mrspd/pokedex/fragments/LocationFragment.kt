@@ -14,7 +14,9 @@ import com.mrspd.pokedex.adapters.LocationsListAdapter
 import com.mrspd.pokedex.adapters.models.modellocation.LocationResponse
 import com.mrspd.pokedex.ui.MainActivity
 import com.mrspd.pokedex.viewmodel.PokeViewModel
-import kotlinx.android.synthetic.main.fragment_pokedex.*
+import kotlinx.android.synthetic.main.fragment_locations.*
+import kotlinx.android.synthetic.main.fragment_pokedex.recyclerView
+import kotlinx.android.synthetic.main.fragment_pokedex.searchView
 
 class LocationFragment : Fragment(R.layout.fragment_locations) {
 
@@ -31,21 +33,14 @@ class LocationFragment : Fragment(R.layout.fragment_locations) {
 
     private val loadingObserver = androidx.lifecycle.Observer<Boolean> { isLoading ->
         if (isLoading) {
-//            loading_progressbar.visibility = View.VISIBLE
-//            listError_textView.visibility = View.GONE
+            loading_progressbar.visibility = View.VISIBLE
+
 
         } else {
-//            loading_progressbar.visibility = View.GONE
+            loading_progressbar.visibility = View.GONE
         }
     }
-    private val listErrorObserver = androidx.lifecycle.Observer<Boolean> { isError ->
-        if (isError) {
-//            listError_textView.visibility = View.VISIBLE
-//            pokedex_recyclerView.visibility = View.GONE
-        } else {
-//            listError_textView.visibility = View.GONE
-        }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,8 +54,8 @@ class LocationFragment : Fragment(R.layout.fragment_locations) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
 
-//        viewModel.loading.observe(this,loadingObserver )
-//        viewModel.loadingError.observe(this, listErrorObserver)
+        viewModel.loading.observe(this, loadingObserver)
+
         viewModel.locations.observe(this, locationObserver)
         viewModel.refresh3(counter)
 

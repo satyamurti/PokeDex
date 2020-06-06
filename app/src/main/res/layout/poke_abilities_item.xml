@@ -15,7 +15,7 @@
         android:background="@drawable/background_item_pokemon_span"
         android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
-        android:text="Pokemon Abilities Item "
+        android:text="@string/pokemon_abilities_item"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="22sp"

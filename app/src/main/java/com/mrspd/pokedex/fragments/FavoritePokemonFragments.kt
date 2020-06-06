@@ -17,7 +17,6 @@ import com.mrspd.pokedex.models.modelspokedex.Pokeresponse
 import com.mrspd.pokedex.ui.MainActivity
 import com.mrspd.pokedex.viewmodel.PokeViewModel
 import kotlinx.android.synthetic.main.fragment_favorite_pokemon_fragments.*
-import kotlinx.android.synthetic.main.fragment_pokedex.*
 import kotlinx.android.synthetic.main.fragment_pokedex.searchView
 
 
@@ -76,11 +75,14 @@ class FavoritePokemonFragments : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val pokeresponse = listAdapter.AllPokeDex[position]
-                viewModel.upsert(pokeresponse)
-                Snackbar.make(view, "Succesfully Saved To Your Favorites", Snackbar.LENGTH_LONG)
+                listAdapter.AllPokeDex.clear()
+                viewModel.delete(pokeresponse)
+                listAdapter.notifyDataSetChanged()
+                Snackbar.make(view, "Succesfully Deleted", Snackbar.LENGTH_LONG)
                     .apply {
 
                         setAction("Undo") {
+                            listAdapter.AllPokeDex.clear()
                             viewModel.upsert(pokeresponse)
                         }
                         show()
@@ -89,7 +91,7 @@ class FavoritePokemonFragments : Fragment() {
         }
 
         ItemTouchHelper(itemTouchHelperCallback).apply {
-            attachToRecyclerView(recyclerView)
+            attachToRecyclerView(recyclerViewfavorites)
         }
 
 

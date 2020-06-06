@@ -2,6 +2,7 @@ package com.mrspd.pokedex.api.apievolutiion
 
 import com.mrspd.pokedex.models.modelsevolution.EvolutionResponse
 import com.mrspd.pokedex.util.Constants.Companion.BASE_URL
+
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -17,7 +18,7 @@ class RetrofitInstanceEvolution {
         .build()
         .create(EvolutionAPI::class.java)
 
-    fun getMyPokesEvolutions(number: Int): Single<EvolutionResponse> {
+    fun getMyPokesEvolutions(number: String): Single<EvolutionResponse> {
         return api.getMyPokes(number.toString())
     }
 }

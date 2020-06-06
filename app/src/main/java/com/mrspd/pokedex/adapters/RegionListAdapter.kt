@@ -39,10 +39,6 @@ class RegionListAdapter(private val itemList: ArrayList<RegionsResponse> = array
         holder.itemView.relativeLayoutBackground.background.colorFilter =
             PorterDuffColorFilter(R.color.red, PorterDuff.Mode.SRC_ATOP)
         holder.view.textViewName.text = itemList[position].name
-//        holder.view.imageView.loadImageUri(
-//            itemList[position].sprites!!.default,
-//            getProgressDrawable(holder.view.context)
-//        )
         holder.itemView.setOnClickListener {
             val action =
                 RegionFragmentDirections.actionRegionFragment2ToPokemonRegoinsFragment(itemList[position])

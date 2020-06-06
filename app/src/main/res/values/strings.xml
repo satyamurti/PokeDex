@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">     PokeDex</string>
+    <string name="evolution_1">Evolution 1</string>
+    <string name="evolution_2">Evolution 2</string>
+    <string name="evolution_3">Evolution 3</string>
+    <string name="items">Items</string>
+    <string name="locations">Locations</string>
+    <string name="pokedex">Pokedex</string>
+    <string name="speed">Speed</string>
+    <string name="attack">Attack</string>
+    <string name="defense">Defense</string>
+    <string name="share_your_pokemon">Share Your Pokemon??</string>
+    <string name="abilities">Abilities</string>
+    <string name="pokemon_abilities_item">Pokemon Abilities Item</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

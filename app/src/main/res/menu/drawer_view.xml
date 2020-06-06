@@ -3,22 +3,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_pokedex"
+            android:icon="@drawable/pokeball1"
             android:title="Pokedex" />
         <item
             android:id="@+id/nav_types"
+            android:icon="@drawable/pokeball1"
             android:title="Types" />
         <item
             android:id="@+id/nav_regions"
+            android:icon="@drawable/pokeball1"
             android:title="Regions" />
         <item
             android:id="@+id/nav_locations"
+            android:icon="@drawable/pokeball1"
             android:title="Locations" />
         <item
             android:id="@+id/nav_items"
+            android:icon="@drawable/pokeball1"
             android:title="Items" />
 
         <item
             android:id="@+id/nav_favorite"
+            android:icon="@drawable/pokeball1"
             android:title="Favourites" />
 
     </group>

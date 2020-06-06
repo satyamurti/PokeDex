@@ -76,17 +76,6 @@ class Conveters {
         return gson.fromJson(name, type)
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    //  @TypeConverter
-    //    fun getType(type: Type): String {
-    //        return type.type?.name.toString()
-    //    }
-    //
-    //    @TypeConverter
-    //    fun setType(name: String): TypeX {
-    //        return TypeX(name, name)
-    //    }
-    ///////////////////////////////////////////////////////////////////////////
 
 
 }

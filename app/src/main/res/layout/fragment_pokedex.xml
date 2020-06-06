@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bubblegum_sans"
                     android:gravity="center_horizontal"
-                    android:text="  Pokedex"
+                    android:text="@string/pokedex"
                     android:textColor="@color/black"
                     android:textSize="34sp"
                     android:textStyle="bold" />

@@ -1,6 +1,7 @@
 package com.mrspd.pokedex.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
@@ -8,33 +9,44 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mrspd.pokedex.R
 import com.mrspd.pokedex.models.modelsevolution.EvolutionResponse
+import com.mrspd.pokedex.models.modelspecies.EvolutionChain
+import com.mrspd.pokedex.models.modelspecies.SpeciesResponse
 import com.mrspd.pokedex.models.modelspokedex.Pokeresponse
 import com.mrspd.pokedex.ui.MainActivity
 import com.mrspd.pokedex.viewmodel.PokeViewModel
 import kotlinx.android.synthetic.main.fragment_evolution.view.*
-import kotlin.math.ceil
 
 class EvolutionFragment : Fragment(R.layout.fragment_evolution) {
     lateinit var pokemon: Pokeresponse
-    var evoltionList = ArrayList<String>()
+    lateinit var evolutions: EvolutionResponse
 
     private lateinit var viewModel: PokeViewModel
-    private var counter = 2
     private var idd = 0
 
     private val evolutionObserver = androidx.lifecycle.Observer<EvolutionResponse> {
         if (it != null) {
-            viewModel.getEvolutionList()
-        }
-    }
-    private val liveNumberObserver = androidx.lifecycle.Observer<Int> {
-        if (it == 27) {
-            evoltionList = viewModel.getMyEvolutionList()
-            if (!evoltionList.isEmpty()) {
-                view?.let { it1 -> setEvolutins(view = it1) }
-            }
+            evolutions = it
+            setEvolutins(view = this.view!!)
+            d("hii", "evolutionObserver")
 
         }
+    }
+    private val species = androidx.lifecycle.Observer<SpeciesResponse> {
+        if (it != null) {
+            callevolutoinIDwork(it)
+            d("hii", "callevolutoinIDwork")
+        }
+
+    }
+
+    private fun callevolutoinIDwork(it: SpeciesResponse) {
+
+        getevolutionId(it.evolution_chain)
+    }
+
+    private fun getevolutionId(evolutionChain: EvolutionChain) {
+        viewModel.refresh7(evolutionChain.url.toString())
+        d("hii", "${evolutionChain.url}")
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -70,34 +82,32 @@ class EvolutionFragment : Fragment(R.layout.fragment_evolution) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         viewModel.evolutions.observe(this, evolutionObserver)
-        viewModel.liveNumber.observe(this, liveNumberObserver)
+        viewModel.species.observe(this, species)
+
         arguments?.let {
             pokemon = PokemonPodexFragmentArgs.fromBundle(it).pokemon
             idd = pokemon.id
-            setIdCall()
+            getspecies(idd)
+            Log.d("hii", "getspecies")
         }
 
     }
 
-    private fun setIdCall() {
-        if (idd == 1) {
-            viewModel.refresh6(1)
-            d("Calucaltions", "LOL")
-        } else {
-            val num: Float = idd.toFloat()
-            val callNumber = ceil((num / 3)).toInt()
-
-            viewModel.refresh6(callNumber)
-            d("Calucaltions", "$callNumber")
-        }
-
+    private fun getspecies(idd: Int) {
+        viewModel.getEvolutionIDFRomSpecies(idd)
     }
+
 
     private fun setEvolutins(view: View) {
         d("hii", "Yes You are in setEvolutions !!")
-        view.tvEvolution1.text = evoltionList[0]
-        view.tvEvolution2.text = evoltionList[1]
-        view.tvEvolution3.text = evoltionList[2]
+        view.tvEvolution1.text = evolutions.chain.species.name
+        if (evolutions.chain.evolves_to.size >= 1) {
+            view.tvEvolution2.text = evolutions.chain.evolves_to.get(0).species.name
+        }
+        if (evolutions.chain.evolves_to.get(0).evolves_to.size >= 1) {
+            view.tvEvolution3.text =
+                evolutions.chain.evolves_to.get(0).evolves_to.get(0).species.name
+        }
 
 
     }
