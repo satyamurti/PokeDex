@@ -2,7 +2,6 @@
   <img width="100px" src="https://github.com/MrSPD-2703/PokeDex/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"/>
 </div>
 <br>
-
 <h1 align="center">Pokédex</h1>
 
 <p align="center">Learn All about Pokemons!!</p>
