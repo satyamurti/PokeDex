@@ -26,4 +26,8 @@
 * Modern Navigation Component to navigate between Fragments 
 
 ## 📸 Screenshots
- Loading ...
+
+||||
+|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------: |
+| ![Imgur](https://i.imgur.com/7NsmH4j.jpg) | ![Imgur](https://i.imgur.com/CQtF775.jpg) | ![Imgur](https://i.imgur.com/dMLR3r2.jpg) |
+| ![Imgur](https://i.imgur.com/dpCCSV6.jpg) | ![Imgur](https://i.imgur.com/jfAsUWu.jpg) | ![Imgur](https://i.imgur.com/yiXbqjw.jpg) |
